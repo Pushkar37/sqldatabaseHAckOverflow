@@ -7,23 +7,23 @@ CREATE TABLE users (
     age INT NOT NULL,
     bmi FLOAT NOT NULL,
     bmi_category VARCHAR(50) NOT NULL,
-    dietary_preference VARCHAR(50),
+    dietary_preference VARCHAR(50) CHECK (dietary_preference IN ('Vegetarian', 'Non-Vegetarian')),
     gender VARCHAR(1),
     activity_level VARCHAR(50),
     allergies TEXT NOT NULL
 );
 
 INSERT INTO users (u_id, name, age, bmi, bmi_category, dietary_preference, gender, activity_level, allergies) VALUES
-(1, 'Alice Johnson', 29, 22.5, 'Normal', 'Vegetarian', 'F', 'Moderate', 'Peanuts'),
-(2, 'Bob Smith', 35, 27.3, 'Overweight', 'Omnivore', 'M', 'High', 'None'),
-(3, 'Charlie Davis', 42, 18.9, 'Underweight', 'Vegan', 'M', 'Low', 'Gluten'),
-(4, 'Diana Lee', 31, 24.6, 'Normal', 'Pescatarian', 'F', 'Moderate', 'Shellfish'),
-(5, 'Ethan Wright', 26, 30.2, 'Obese', 'Keto', 'M', 'High', 'Dairy'),
-(6, 'Fiona Green', 38, 26.1, 'Overweight', 'Vegetarian', 'F', 'Low', 'Soy'),
-(7, 'George Miller', 50, 21.8, 'Normal', 'Omnivore', 'M', 'Moderate', 'None'),
-(8, 'Hannah Clark', 22, 19.7, 'Normal', 'Vegan', 'F', 'High', 'Nuts'),
-(9, 'Ian Brown', 45, 32.5, 'Obese', 'Paleo', 'M', 'Low', 'Eggs'),
-(10, 'Jessica Adams', 28, 23.4, 'Normal', 'Omnivore', 'F', 'Moderate', 'Seafood');
+(1, 'Aarav Sharma', 29, 22.5, 'Normal', 'Vegetarian', 'M', 'Moderate', 'Peanuts'),
+(2, 'Neha Verma', 35, 27.3, 'Overweight', 'Non-Vegetarian', 'F', 'High', 'None'),
+(3, 'Rohan Iyer', 42, 18.9, 'Underweight', 'Vegetarian', 'M', 'Low', 'Gluten'),
+(4, 'Priya Nair', 31, 24.6, 'Normal', 'Non-Vegetarian', 'F', 'Moderate', 'Shellfish'),
+(5, 'Vikram Das', 26, 30.2, 'Obese', 'Vegetarian', 'M', 'High', 'Dairy'),
+(6, 'Ananya Kapoor', 38, 26.1, 'Overweight', 'Vegetarian', 'F', 'Low', 'Soy'),
+(7, 'Suresh Menon', 50, 21.8, 'Normal', 'Non-Vegetarian', 'M', 'Moderate', 'None'),
+(8, 'Meera Joshi', 22, 19.7, 'Normal', 'Vegetarian', 'F', 'High', 'Nuts'),
+(9, 'Rahul Singh', 45, 32.5, 'Obese', 'Non-Vegetarian', 'M', 'Low', 'Eggs'),
+(10, 'Kavita Rao', 28, 23.4, 'Normal', 'Vegetarian', 'F', 'Moderate', 'Seafood');
 
 CREATE TABLE meal_info (
     m_id INT PRIMARY KEY,
