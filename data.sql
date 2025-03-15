@@ -28,6 +28,7 @@ INSERT INTO users (u_id, name, age, bmi, bmi_category, dietary_preference, gende
 CREATE TABLE meal_info (
     m_id INT PRIMARY KEY,
     meal_name VARCHAR(20) UNIQUE NOT NULL,
+    category ENUM('Lunch','Breakfast','Dinner','Snack')
     protein FLOAT,
     carbs FLOAT,
     fat FLOAT, 
@@ -57,6 +58,15 @@ INSERT INTO meal_info (m_id, meal_name, protein, carbs, fat, fiber, sodium, pota
 (10, 'Methi Thepla', 9.0, 38.0, 6.0, 4.0, 200.0, 220.0, 55.0, 160.0, 8.0, 1.0, 5.5, 0.0, 'Yes');
 
 
-Create Table meal_plan(meal_planned int primary,meal_1 int , meal_2 int,meal_3 int,veg varchar(10) );
-
-Create Table User_meals (day int default 1  ,u_id int, meal_planned int );
+Create Table meal_plan(plan_id AUTO_INCREMENT int primary,
+u_id int ,
+ day ENUM('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday') ,
+ breakfast_id int ,
+lunch_id int,
+  dinner_id int,
+  FOREIGN KEY (u_id) references users(u_id),
+  FOREIGN KEY (breakfast_id) references meal_info(m_id),
+  FOREIGN KEY (lunch_id) references meal_info(m_id),
+  FOREIGN KEY (dinner_id) references meal_info(m_id),
+ 
+  veg varchar(10) CHECK(veg IN('YES' , 'NO')) );
